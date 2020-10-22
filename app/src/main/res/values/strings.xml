@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PhotolandHK</string>
+    <string name="title_home">主頁</string>
+    <string name="title_newspaper">攝影大事報</string>
+    <string name="title_report">真 · 用家報告</string>
+    <string name="title_library">產品檔案室</string>
+    <string name="title_discussion">攝影齊齊傾</string>
+    <string name="title_events">活動報名站</string>
+    <string name="more">查看更多</string>
+</resources>

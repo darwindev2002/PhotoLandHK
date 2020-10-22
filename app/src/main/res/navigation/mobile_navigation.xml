@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.darwin.photolandhk.ui.home.home_cards.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_newspaper"
+        android:name="com.darwin.photolandhk.ui.dashboard.DashboardFragment"
+        android:label="@string/title_newspaper"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/navigation_gear_review"
+        android:name="com.darwin.photolandhk.ui.notifications.NotificationsFragment"
+        android:label="@string/title_report"
+        tools:layout="@layout/fragment_report" />
+
+    <fragment
+        android:id="@+id/navigation_product_library"
+        android:name="com.darwin.photolandhk.ui.notifications.NotificationsFragment"
+        android:label="@string/title_library"
+        tools:layout="@layout/fragment_product_library" />
+
+    <fragment
+        android:id="@+id/navigation_discussion"
+        android:name="com.darwin.photolandhk.ui.notifications.NotificationsFragment"
+        android:label="@string/title_discussion"
+        tools:layout="@layout/fragment_discussion" />
+
+    <fragment
+        android:id="@+id/navigation_event_sign_up"
+        android:name="com.darwin.photolandhk.ui.notifications.NotificationsFragment"
+        android:label="@string/title_events"
+        tools:layout="@layout/fragment_events" />
+
+</navigation>

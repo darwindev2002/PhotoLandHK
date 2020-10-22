@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <ScrollView
+        android:id="@+id/homeRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+<!--            <com.synnapps.carouselview.CarouselView-->
+<!--                android:id="@+id/carouselView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="240dp"-->
+<!--                app:fillColor="#FFFFFFFF"-->
+<!--                app:pageColor="#00000000"-->
+<!--                app:radius="6dp"-->
+<!--                app:slideInterval="3000"-->
+<!--                app:strokeColor="#FF777777"-->
+<!--                app:strokeWidth="1dp" />-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ad_header"
+                android:src="@drawable/cshine_942x135"
+                android:scaleType="fitStart"
+                android:adjustViewBounds="true"/>
+
+            <include layout="@layout/home_news_card" />
+
+            <include layout="@layout/home_report_card" />
+
+            <include layout="@layout/home_discussion_card" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_main">
+
+    <item
+        android:id="@+id/nav_report"
+        android:icon="@drawable/ic_report"
+        android:title="@string/title_report" />
+
+    <item
+        android:id="@+id/nav_news"
+        android:icon="@drawable/ic_news"
+        android:title="@string/title_newspaper" />
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/nav_discussion"
+        android:icon="@drawable/ic_discussion"
+        android:title="@string/title_discussion" />
+
+    <item
+        android:id="@+id/nav_events"
+        android:icon="@drawable/ic_event"
+        android:title="@string/title_events" />
+
+</menu>
