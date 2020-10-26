@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+//import com.darwin.photolandhk.FragmentUpdate.loadPage
 import com.darwin.photolandhk.R
-import com.darwin.photolandhk.MainActivity
 
 class HomeFragment : Fragment() {
 
@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
         newsRecyvlerView.adapter = HomeNewsAdapter()
 
         val viewMore: TextView = view.findViewById(R.id.nav_news_more)
-        viewMore.setOnClickListener{ MainActivity.loadPage(this.parentFragmentManager,R.id.nav_news) }
+//        viewMore.setOnClickListener{ loadPage(this.parentFragmentManager,R.id.nav_news) }
     }
 
     fun createReportRecycler(view: View){
@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
         reportRecyclerView.adapter = HomeReportAdapter()
 
         val viewMore: TextView = view.findViewById(R.id.nav_report_more)
-        viewMore.setOnClickListener{ loadPage(this.parentFragmentManager,R.id.nav_report) }
+//        viewMore.setOnClickListener{ loadPage(this.parentFragmentManager,R.id.nav_report) }
     }
 
     fun createDiscussionRecycler(view: View){
@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
         discussionRecyclerView.adapter = HomeDiscussionAdapter()
 
         val viewMore: TextView = view.findViewById(R.id.nav_discussion_more)
-        viewMore.setOnClickListener{ loadPage(this.parentFragmentManager,R.id.nav_discussion) }
+//        viewMore.setOnClickListener{ loadPage(this.parentFragmentManager,R.id.nav_discussion) }
     }
 
 }

@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity(){
         }
         if (selectedFragment != null) {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit()
+            val BottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
         }
     }
 
