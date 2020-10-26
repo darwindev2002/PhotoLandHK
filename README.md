@@ -2,8 +2,6 @@
 
 PhotoLandHK is an android app created for photographers to view updates on photolandhk.com through an app with user-friendly interface.
 
-Android app for the website photolandhk.com :camera:, created with Kotlin and Java.
-
 ## Table of contents
 * [General Info](#general-info)
 * [Screenshots](#screenshots)
