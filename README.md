@@ -48,6 +48,7 @@ Project has implemented:
 * Discussion section
 * Event calender
 * Navigation from home page to other sections
+* Link to cloud database for real-time updates
 
 ## Contact
 Created by @darwindev2002 - feel free to contact me!
