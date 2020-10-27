@@ -1,15 +1,18 @@
-package com.darwin.photolandhk.ui.home.home_cards
+package com.darwin.photolandhk.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-//import com.darwin.photolandhk.FragmentUpdate.loadPage
+import com.darwin.photolandhk.MainActivity
 import com.darwin.photolandhk.R
+import com.darwin.photolandhk.ui.home.home_cards.HomeDiscussionAdapter
+import com.darwin.photolandhk.ui.home.home_cards.HomeNewsAdapter
+import com.darwin.photolandhk.ui.home.home_cards.HomeReportAdapter
 
 class HomeFragment : Fragment() {
 
@@ -42,30 +45,42 @@ class HomeFragment : Fragment() {
         val newsRecyvlerView: RecyclerView = view.findViewById(R.id.home_news_recyclerview)
         newsRecyvlerView.setHasFixedSize(true)
         newsRecyvlerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
-        newsRecyvlerView.adapter = HomeNewsAdapter()
+        newsRecyvlerView.adapter =
+            HomeNewsAdapter()
 
-        val viewMore: TextView = view.findViewById(R.id.nav_news_more)
-//        viewMore.setOnClickListener{ loadPage(this.parentFragmentManager,R.id.nav_news) }
+        val viewMore: Button = view.findViewById(R.id.nav_news_more)
+        viewMore.setOnClickListener{
+            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_news)
+            (activity as MainActivity).updateBottomNav(R.id.nav_news)
+        }
     }
 
     fun createReportRecycler(view: View){
         val reportRecyclerView: RecyclerView = view.findViewById(R.id.home_report_recyclerview)
         reportRecyclerView.setHasFixedSize(true)
         reportRecyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
-        reportRecyclerView.adapter = HomeReportAdapter()
+        reportRecyclerView.adapter =
+            HomeReportAdapter()
 
-        val viewMore: TextView = view.findViewById(R.id.nav_report_more)
-//        viewMore.setOnClickListener{ loadPage(this.parentFragmentManager,R.id.nav_report) }
+        val viewMore: Button = view.findViewById(R.id.nav_report_more)
+        viewMore.setOnClickListener{
+            (activity as MainActivity).loadPage(this.parentFragmentManager,R.id.nav_report)
+            (activity as MainActivity).updateBottomNav(R.id.nav_report)
+        }
     }
 
     fun createDiscussionRecycler(view: View){
         val discussionRecyclerView: RecyclerView = view.findViewById(R.id.home_discussion_recyclerview)
         discussionRecyclerView.setHasFixedSize(true)
         discussionRecyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
-        discussionRecyclerView.adapter = HomeDiscussionAdapter()
+        discussionRecyclerView.adapter =
+            HomeDiscussionAdapter()
 
-        val viewMore: TextView = view.findViewById(R.id.nav_discussion_more)
-//        viewMore.setOnClickListener{ loadPage(this.parentFragmentManager,R.id.nav_discussion) }
+        val viewMore: Button = view.findViewById(R.id.nav_discussion_more)
+        viewMore.setOnClickListener{
+            (activity as MainActivity).loadPage(this.parentFragmentManager,R.id.nav_discussion)
+            (activity as MainActivity).updateBottomNav(R.id.nav_discussion)
+        }
     }
 
 }

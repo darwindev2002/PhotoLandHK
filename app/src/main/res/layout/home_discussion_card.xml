@@ -28,9 +28,11 @@
                 android:text="@string/title_discussion"
                 android:textColor="@color/colorHomeDarkCardBackground" />
 
-            <TextView
+            <Button
                 android:id="@+id/nav_discussion_more"
                 style="@style/HomeCardMore"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
                 android:background="#FFFFFF"
                 android:textColor="@color/colorDiscussion" />
 

@@ -7,7 +7,7 @@ import com.darwin.photolandhk.ui.DiscussionFragment
 import com.darwin.photolandhk.ui.EventsFragment
 import com.darwin.photolandhk.ui.NewsFragment
 import com.darwin.photolandhk.ui.ReportsFragment
-import com.darwin.photolandhk.ui.home.home_cards.HomeFragment
+import com.darwin.photolandhk.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(){
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(){
 //        createAds()
     }
 
-    fun loadPage(fragmentManager: FragmentManager, id: Int) {
+     fun loadPage(fragmentManager: FragmentManager, id: Int) {
         val selectedFragment = when (id) {
             R.id.nav_report -> ReportsFragment()
             R.id.nav_news -> NewsFragment()
@@ -41,8 +41,12 @@ class MainActivity : AppCompatActivity(){
         }
         if (selectedFragment != null) {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit()
-            val BottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
         }
+    }
+
+    fun updateBottomNav(id: Int){
+        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNav.selectedItemId = id
     }
 
 }

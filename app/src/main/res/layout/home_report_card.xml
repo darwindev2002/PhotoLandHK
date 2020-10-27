@@ -26,9 +26,11 @@
                 android:text="@string/title_report"
                 android:textColor="@color/colorHomeWhiteCardBackground" />
 
-            <TextView
+            <Button
                 android:id="@+id/nav_report_more"
                 style="@style/HomeCardMore"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
                 android:background="@color/colorHomeDarkCardBackground"
                 android:textColor="@color/colorReport" />
 
