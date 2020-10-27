@@ -1,6 +1,9 @@
 package com.darwin.photolandhk
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.darwin.photolandhk.ui.DiscussionFragment
@@ -47,6 +50,13 @@ class MainActivity : AppCompatActivity(){
     fun updateBottomNav(id: Int){
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNav.selectedItemId = id
+    }
+
+    fun startBrowserLaowa(view: View){
+        val url = "https://www.laowa.com.hk"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
     }
 
 }

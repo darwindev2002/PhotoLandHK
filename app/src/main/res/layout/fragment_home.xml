@@ -33,7 +33,8 @@
                 android:id="@+id/ad_header"
                 android:src="@drawable/cshine_942x135"
                 android:scaleType="fitStart"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:onClick="startBrowserLaowa" />
 
             <include layout="@layout/home_news_card" />
 
