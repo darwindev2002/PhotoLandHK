@@ -10,5 +10,16 @@
         android:textSize="30sp"
         android:layout_centerInParent="true"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/news_recyclerview"/>
+
+    </ScrollView>
+
 
 </RelativeLayout>

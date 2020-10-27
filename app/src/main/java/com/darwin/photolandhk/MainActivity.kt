@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.darwin.photolandhk.ui.DiscussionFragment
 import com.darwin.photolandhk.ui.EventsFragment
-import com.darwin.photolandhk.ui.NewsFragment
 import com.darwin.photolandhk.ui.ReportsFragment
 import com.darwin.photolandhk.ui.home.HomeFragment
+import com.darwin.photolandhk.ui.news.NewsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(){
