@@ -47,7 +47,6 @@ Project has implemented:
 * News section
 * Discussion section
 * Event calender
-* Navigation from home page to other sections
 * Link to cloud database for real-time updates
 
 ## Contact
