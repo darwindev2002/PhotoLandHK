@@ -17,7 +17,6 @@ In this app you can view:
 * Updated news in the photography industry
 * Skills and experiences from photographers of different fields
 * Gear review on newly-released gear
-* Discussion forums about photography
 * Upcoming events held by photoland.hk
 
 ## Screenshots
@@ -45,7 +44,7 @@ Project has implemented:
 ## Todo list
 * Gear review section
 * News section
-* Discussion section
+* Skills discussion section
 * Event calender
 * Link to cloud database for real-time updates
 
