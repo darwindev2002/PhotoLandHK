@@ -3,7 +3,7 @@ package com.darwin.photolandhk.ui.news
 import com.darwin.photolandhk.R
 import com.darwin.photolandhk.ui.home.home_cards.HomeCardItem
 
-object ExampleList {
+object ExampleNewsList {
 //    const val website: String = "https://photolandhk.com"
 //    val theList: ArrayList<NewsletterItem> = ArrayList(listOf(
 //        NewsletterItem("/wp-content/uploads/2020/09/1200x630_Z_Announce_2020_localized_092520-390x220.jpeg", "[新機傳聞] 即將發佈：Nikon Z6 II 和 Z7 II", "Sep 29, 2020"),

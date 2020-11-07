@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_main_home, container, false)
 //        createCarouselView(view)
 //        val adView: ImageView = view.findViewById(R.id.ad_header)
 //        adView.setImageResource(R.drawable.cshine_942x135)
@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         newsRecyvlerView.adapter =
             HomeNewsAdapter()
 
-        val viewMore: Button = view.findViewById(R.id.nav_news_more)
+        val viewMore: Button = view.findViewById(R.id.button_more_news)
         viewMore.setOnClickListener{
             (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_news)
             (activity as MainActivity).updateBottomNav(R.id.nav_news)
@@ -62,7 +62,7 @@ class HomeFragment : Fragment() {
         reportRecyclerView.adapter =
             HomeReportAdapter()
 
-        val viewMore: Button = view.findViewById(R.id.nav_report_more)
+        val viewMore: Button = view.findViewById(R.id.button_more_report)
         viewMore.setOnClickListener{
             (activity as MainActivity).loadPage(this.parentFragmentManager,R.id.nav_report)
             (activity as MainActivity).updateBottomNav(R.id.nav_report)
@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
         discussionRecyclerView.adapter =
             HomeDiscussionAdapter()
 
-        val viewMore: Button = view.findViewById(R.id.nav_discussion_more)
+        val viewMore: Button = view.findViewById(R.id.button_more_discussion)
         viewMore.setOnClickListener{
             (activity as MainActivity).loadPage(this.parentFragmentManager,R.id.nav_discussion)
             (activity as MainActivity).updateBottomNav(R.id.nav_discussion)

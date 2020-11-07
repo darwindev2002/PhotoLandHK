@@ -5,12 +5,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/colorHomeDarkCardBackground"
-    app:cardCornerRadius="0dp">
+    app:cardCornerRadius="0dp"
+    style="@style/HomeCardItemSeparation"
+    android:id="@+id/news_item_card">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/HomeCardItemSeparation">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/news_recyclerview_imageView"

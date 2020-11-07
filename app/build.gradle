@@ -1,6 +1,12 @@
+plugins {
+//    id "org.jetbrains.kotlin.multiplatform" version "1.4.10"
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.10'
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion 30
@@ -50,11 +56,18 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'com.synnapps:carouselview:0.1.5'
+//    implementation 'com.synnapps:carouselview:0.1.5'
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     apply plugin: "kotlin-kapt"
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
-    implementation 'com.google.android.gms:play-services-ads:19.4.0'
+    api 'org.jetbrains.kotlin:kotlin-stdlib'
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+//    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-jsonparser:1.0.1"
+
+//    implementation 'com.google.android.gms:play-services-ads:19.4.0'
 }
+

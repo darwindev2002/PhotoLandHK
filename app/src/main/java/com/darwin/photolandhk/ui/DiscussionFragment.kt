@@ -14,7 +14,7 @@ class DiscussionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_discussion, container, false)
+        return inflater.inflate(R.layout.fragment_main_discussion, container, false)
     }
 
 }

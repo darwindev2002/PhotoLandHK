@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PhotolandHK.iml" filepath="$PROJECT_DIR$/.idea/modules/PhotolandHK.iml" group="PhotolandHK" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="PhotolandHK/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ion-master/ion-master.iml" filepath="$PROJECT_DIR$/.idea/modules/ion-master/ion-master.iml" group="PhotolandHK/ion-master" />
     </modules>
   </component>
 </project>

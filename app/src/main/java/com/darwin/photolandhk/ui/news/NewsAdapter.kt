@@ -10,7 +10,7 @@ import com.darwin.photolandhk.R
 
 class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
-    private val mExampleList = ExampleList.theList
+    private val mExampleList = ExampleNewsList.theList
 
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val mImageView: ImageView = itemView.findViewById(R.id.news_card_image)
