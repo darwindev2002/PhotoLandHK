@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.darwin.photolandhk"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -55,6 +55,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.10"
 
 //    implementation 'com.synnapps:carouselview:0.1.5'
 

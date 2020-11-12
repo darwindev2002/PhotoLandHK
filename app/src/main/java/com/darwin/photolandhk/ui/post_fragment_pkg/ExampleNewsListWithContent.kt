@@ -1,4 +1,4 @@
-package com.darwin.photolandhk.ui.posts
+package com.darwin.photolandhk.ui.post_fragment_pkg
 
 import com.darwin.photolandhk.R
 

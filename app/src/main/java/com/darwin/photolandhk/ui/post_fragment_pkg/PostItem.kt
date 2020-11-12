@@ -1,4 +1,4 @@
-package com.darwin.photolandhk.ui.posts
+package com.darwin.photolandhk.ui.post_fragment_pkg
 
 class PostItem(title: String, author: String, date: String, urlToImage: Int, url: String) {
 

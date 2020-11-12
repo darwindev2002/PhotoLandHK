@@ -9,6 +9,22 @@
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_above="@+id/fragment_container">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/app_name"
+            app:titleTextColor="@color/colorText"
+            android:textSize="16sp"
+            android:id="@+id/titleToolbar"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
