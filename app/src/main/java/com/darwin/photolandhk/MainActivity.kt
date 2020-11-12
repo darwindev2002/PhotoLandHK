@@ -12,11 +12,6 @@ import com.darwin.photolandhk.ui.ReportsFragment
 import com.darwin.photolandhk.ui.home.HomeFragment
 import com.darwin.photolandhk.ui.news.NewsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonTransformingSerializer
 
 class MainActivity : AppCompatActivity(){
 
@@ -62,19 +57,6 @@ class MainActivity : AppCompatActivity(){
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
         startActivity(intent)
-    }
-
-    @Serializable
-    data class Project(
-        val name: String,
-        @Serializable(with = PostListSerializer::class)
-        val users: List<Holder.Post>
-    )
-
-    object PostListSerializer : JsonTransformingSerializer<List<Holder.Post>>(ListSerializer(Holder.Post.serializer())) {
-        override fun transformDeserialize(element: JsonElement): JsonElement =
-            if (element !is JsonArray) JsonArray(listOf(element)) else element
-
     }
 
 }

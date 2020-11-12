@@ -32,7 +32,7 @@ class PostActivity : AppCompatActivity() {
         }
 
         val mTextView: TextView = findViewById(R.id.textView)
-        var str = PostProcessing.getJson(10502)
+        var str = PostProcessing.getJsonClass(10502).toString()
         mTextView.text = str
     }
 
