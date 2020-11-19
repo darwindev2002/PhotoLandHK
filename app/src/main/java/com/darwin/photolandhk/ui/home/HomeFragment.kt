@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
         newsRecyvlerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
         newsRecyvlerView.adapter =
             HomeNewsAdapter()
-
         val viewMore: Button = view.findViewById(R.id.button_more_news)
         viewMore.setOnClickListener{
             (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_news)
@@ -64,7 +63,7 @@ class HomeFragment : Fragment() {
 
         val viewMore: Button = view.findViewById(R.id.button_more_report)
         viewMore.setOnClickListener{
-            (activity as MainActivity).loadPage(this.parentFragmentManager,R.id.nav_report)
+            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_report)
             (activity as MainActivity).updateBottomNav(R.id.nav_report)
         }
     }
@@ -75,10 +74,10 @@ class HomeFragment : Fragment() {
         discussionRecyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
         discussionRecyclerView.adapter =
             HomeDiscussionAdapter()
-
+        discussionRecyclerView.adapter?.notifyDataSetChanged()
         val viewMore: Button = view.findViewById(R.id.button_more_discussion)
         viewMore.setOnClickListener{
-            (activity as MainActivity).loadPage(this.parentFragmentManager,R.id.nav_discussion)
+            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_discussion)
             (activity as MainActivity).updateBottomNav(R.id.nav_discussion)
         }
     }

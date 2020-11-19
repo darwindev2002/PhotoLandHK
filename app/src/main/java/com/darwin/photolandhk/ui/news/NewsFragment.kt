@@ -25,6 +25,8 @@ class NewsFragment : Fragment() {
         val newsRecyclerView: RecyclerView = view.findViewById(R.id.news_recyclerview)
         newsRecyclerView.setHasFixedSize(true)
         newsRecyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+        (newsRecyclerView.layoutManager as LinearLayoutManager).initialPrefetchItemCount = 30
+        (newsRecyclerView.layoutManager as LinearLayoutManager).isItemPrefetchEnabled = true
         newsRecyclerView.adapter = NewsAdapter()
     }
 

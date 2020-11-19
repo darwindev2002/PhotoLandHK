@@ -17,7 +17,6 @@
         android:id="@+id/postToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:text="This is a toolbar."
         android:textSize="16sp"
         app:titleTextColor="@color/colorText" />
 
@@ -26,7 +25,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <TextView
             android:layout_width="match_parent"
