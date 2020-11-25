@@ -1,54 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home_report_card"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    app:cardBackgroundColor="@color/colorHomeWhiteCardBackground"
-    tools:showIn="@layout/fragment_main_home"
-    app:contentPaddingBottom="3dp">
+    tools:showIn="@layout/fragment_overview_home">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.darwin.photolandhk.ui.report.HomeDiscussionViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/home_discussion_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="7dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:cardBackgroundColor="@color/colorHomeWhiteCardBackground">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                style="@style/HomeCardHeader"
-                android:background="@color/colorDiscussion"
-                android:text="@string/title_discussion"
-                android:textColor="@color/colorHomeDarkCardBackground" />
-
-            <Button
-                android:id="@+id/button_more_discussion"
-                style="@style/HomeCardMore"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:background="#FFFFFF"
-                android:textColor="@color/colorDiscussion" />
-
-        </RelativeLayout>
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_discussion_recyclerview"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/HomeCardHeader"
+                    android:background="@color/colorDiscussion"
+                    android:text="@string/title_newspaper"
+                    android:textColor="@color/colorHomeDarkCardBackground" />
+
+                <Button
+                    android:id="@+id/button_more_discussion"
+                    style="@style/HomeCardMore"
+                    android:background="@color/colorHomeWhiteCardBackground"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:textColor="@color/colorDiscussion" />
+
+            </RelativeLayout>
+
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
 
-        </ScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_discussion_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:listData="@{viewModel.posts}" />
 
-    </LinearLayout>
+            </ScrollView>
 
-</androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/status_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:apiStatus="@{viewModel.status}" />
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

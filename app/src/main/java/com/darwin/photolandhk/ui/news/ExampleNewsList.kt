@@ -1,7 +1,7 @@
 package com.darwin.photolandhk.ui.news
 
 import com.darwin.photolandhk.R
-import com.darwin.photolandhk.ui.home.home_cards.HomeCardItem
+import com.darwin.photolandhk.depreciated.HomeCardItem
 
 object ExampleNewsList {
 //    const val website: String = "https://photolandhk.com"

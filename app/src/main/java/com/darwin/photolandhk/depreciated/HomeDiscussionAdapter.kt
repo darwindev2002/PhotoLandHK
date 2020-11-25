@@ -1,4 +1,4 @@
-package com.darwin.photolandhk.ui.home.home_cards
+package com.darwin.photolandhk.depreciated
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,10 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.darwin.photolandhk.R
-import com.darwin.photolandhk.posts.PostProcessing
-import com.darwin.photolandhk.posts.PostProcessing.ITEM_COUNT
-import com.darwin.photolandhk.posts.PostProcessing.category_map
-import com.darwin.photolandhk.ui.post_fragment_pkg.PostActivity
+import com.darwin.photolandhk.depreciated.PostProcessing.ITEM_COUNT
+import com.darwin.photolandhk.depreciated.PostProcessing.category_map
+import com.darwin.photolandhk.ui.post.PostFragment
 import org.json.JSONArray
 
 class HomeDiscussionAdapter() : RecyclerView.Adapter<HomeDiscussionAdapter.DiscussionViewHolder>() {
@@ -48,7 +47,7 @@ class HomeDiscussionAdapter() : RecyclerView.Adapter<HomeDiscussionAdapter.Discu
         holder.mTitle.text = currentItem.getJSONObject("title").optString("rendered")
         val post_id: Int = currentItem.optInt("id")
         holder.itemView.setOnClickListener {
-            it.context.startActivity(Intent(it.context, PostActivity::class.java).putExtra("post_id", post_id))
+            it.context.startActivity(Intent(it.context, PostFragment::class.java).putExtra("post_id", post_id))
         }
     }
 

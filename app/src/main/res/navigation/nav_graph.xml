@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/reportFragment">
+
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.darwin.photolandhk.ui.report.ReportFragment"
+        android:label="fragment_overview_report"
+        tools:layout="fragment_overview_report" >
+        <action
+            android:id="@+id/action_showPost"
+            app:destination="@id/postFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.darwin.photolandhk.ui.post.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post">
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.darwin.photolandhk.posts.PostContent" />
+    </fragment>
+
+</navigation>

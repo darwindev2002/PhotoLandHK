@@ -1,4 +1,4 @@
-package com.darwin.photolandhk.posts
+package com.darwin.photolandhk.depreciated
 
 import kotlinx.serialization.Serializable
 

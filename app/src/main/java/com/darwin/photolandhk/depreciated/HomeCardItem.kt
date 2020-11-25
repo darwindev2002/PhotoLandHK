@@ -1,4 +1,4 @@
-package com.darwin.photolandhk.ui.home.home_cards
+package com.darwin.photolandhk.depreciated
 
 class HomeCardItem(image: Int, title: String, date: String) {
 //    val imageURL = imageURL

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.darwin.photolandhk.ui.report.HomeNewsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:id="@+id/homeRecyclerview"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ad_header"
+                android:src="@drawable/cshine_942x135"
+                android:scaleType="fitStart"
+                android:adjustViewBounds="true"
+                android:onClick="startBrowserLaowa"
+                android:contentDescription="@string/content_description_laowa_ad_banner"/>
+
+            <include layout="@layout/home_news_card" android:id="@+id/home_news_card" />
+
+            <include layout="@layout/home_report_card" android:id="@+id/home_report_card"/>
+
+            <include layout="@layout/home_discussion_card" android:id="@+id/home_discussion_card"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

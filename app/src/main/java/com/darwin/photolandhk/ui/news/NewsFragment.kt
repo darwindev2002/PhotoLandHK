@@ -16,7 +16,7 @@ class NewsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_main_news, container, false)
+        val view = inflater.inflate(R.layout.fragment_overview_news, container, false)
         createNewsRecycler(view)
         return view
     }

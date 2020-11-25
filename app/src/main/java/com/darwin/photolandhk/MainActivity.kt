@@ -7,18 +7,16 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.darwin.photolandhk.posts.PostProcessing
-import com.darwin.photolandhk.posts.PostProcessing.category_map
 import com.darwin.photolandhk.ui.DiscussionFragment
 import com.darwin.photolandhk.ui.EventsFragment
-import com.darwin.photolandhk.ui.ReportsFragment
 import com.darwin.photolandhk.ui.home.HomeFragment
 import com.darwin.photolandhk.ui.news.NewsFragment
+import com.darwin.photolandhk.ui.report.ReportFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(){
 
-    private val fragList: List<Fragment> = ArrayList<Fragment>(listOf(HomeFragment(), ReportsFragment(), NewsFragment(), DiscussionFragment(), EventsFragment()))
+    private val fragList: List<Fragment> = ArrayList<Fragment>(listOf(HomeFragment(), ReportFragment(), NewsFragment(), DiscussionFragment(), EventsFragment()))
     private var currentFragment: Fragment = Fragment()
 
     private val navListener: BottomNavigationView.OnNavigationItemSelectedListener =
@@ -32,11 +30,11 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, fragList[0]).hide(fragList[0])
-            .add(R.id.fragment_container, fragList[1]).hide(fragList[1])
-            .add(R.id.fragment_container, fragList[2]).hide(fragList[2])
-            .add(R.id.fragment_container, fragList[3]).hide(fragList[3])
-            .add(R.id.fragment_container, fragList[4]).hide(fragList[4])
+            .add(R.id.fragment_overview_container, fragList[0]).hide(fragList[0])
+            .add(R.id.fragment_overview_container, fragList[1]).hide(fragList[1])
+//            .add(R.id.fragment_overview_container, fragList[2]).hide(fragList[2])
+            .add(R.id.fragment_overview_container, fragList[3]).hide(fragList[3])
+            .add(R.id.fragment_overview_container, fragList[4]).hide(fragList[4])
             .commit()
 
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
@@ -46,7 +44,6 @@ class MainActivity : AppCompatActivity(){
 //        MobileAds.initialize(this) {}
 //        createAds()
 
-        PostProcessing.getPostOverview(category_map[getString(R.string.title_newspaper)]?.id)
     }
 
      fun loadPage(fragmentManager: FragmentManager, selected_fragment: Int) {
@@ -57,14 +54,13 @@ class MainActivity : AppCompatActivity(){
             R.id.nav_discussion -> 3
             R.id.nav_events -> 4
             else -> 99
-        }
-
+         }
          fragmentManager.beginTransaction()
              .hide(currentFragment)
              .show(fragList[frag])
              .commit()
          currentFragment = fragList[frag]
-    }
+     }
 
     fun updateBottomNav(id: Int){
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)

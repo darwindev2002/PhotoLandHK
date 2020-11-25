@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        google()
+    }
+    dependencies {
+        def nav_version = "2.3.1"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+    }
+}
+
 plugins {
 //    id "org.jetbrains.kotlin.multiplatform" version "1.4.10"
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.10'
@@ -7,6 +17,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlinx-serialization'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 30
@@ -36,6 +47,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
     }
 }
 
@@ -70,5 +84,13 @@ dependencies {
 //    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-jsonparser:1.0.1"
 
 //    implementation 'com.google.android.gms:play-services-ads:19.4.0'
+
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.11.0"
+    implementation "com.squareup.moshi:moshi-adapters:1.11.0"
+
 }
 

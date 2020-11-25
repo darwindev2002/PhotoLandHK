@@ -19,4 +19,6 @@
     <color name="colorHomeDarkCardBackground">#1f2024</color>
     <color name="colorHomeWhiteCardBackground">#FFFFFF</color>
 
+    <color name="colorTitle">#333333</color>
+
 </resources>

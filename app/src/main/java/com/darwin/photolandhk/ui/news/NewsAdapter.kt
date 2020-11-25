@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.darwin.photolandhk.R
-import com.darwin.photolandhk.posts.PostProcessing
-import com.darwin.photolandhk.ui.post_fragment_pkg.PostActivity
+import com.darwin.photolandhk.depreciated.PostProcessing
+import com.darwin.photolandhk.ui.post.PostFragment
 import org.json.JSONArray
 
 class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
@@ -27,7 +27,7 @@ class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.post_overview_card_big, parent, false)
 
         title = view.context.getString(R.string.title_newspaper)
         id = PostProcessing.category_map[title]?.id as Int
@@ -49,7 +49,7 @@ class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
         holder.mTitle.text = currentItem.getJSONObject("title").optString("rendered")
         val post_id: Int = currentItem.optInt("id")
         holder.itemView.setOnClickListener {
-            it.context.startActivity(Intent(it.context, PostActivity::class.java).putExtra("post_id", post_id))
+            it.context.startActivity(Intent(it.context, PostFragment::class.java).putExtra("post_id", post_id))
         }
     }
 
