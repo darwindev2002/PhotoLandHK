@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.darwin.photolandhk.network.ApiStatus
 import com.darwin.photolandhk.posts.PostContent
-import com.darwin.photolandhk.ui.PostBigOverviewAdapter
+import com.darwin.photolandhk.ui.ReportOverviewAdapter
 import com.darwin.photolandhk.ui.home.home_cards.HomeDiscussionOverviewAdapter
 import com.darwin.photolandhk.ui.home.home_cards.HomeNewsOverviewAdapter
 import com.darwin.photolandhk.ui.home.home_cards.HomeReportOverviewAdapter
@@ -33,7 +33,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<PostContent>?) {
         is HomeNewsOverviewAdapter -> (recyclerView.adapter as HomeNewsOverviewAdapter).submitList(data)
         is HomeReportOverviewAdapter -> (recyclerView.adapter as HomeReportOverviewAdapter).submitList(data)
         is HomeDiscussionOverviewAdapter -> (recyclerView.adapter as HomeDiscussionOverviewAdapter).submitList(data)
-        is PostBigOverviewAdapter -> (recyclerView.adapter as PostBigOverviewAdapter).submitList(data)
+        is ReportOverviewAdapter -> (recyclerView.adapter as ReportOverviewAdapter).submitList(data)
         else -> null
     }
 //    if (recyclerView.adapter is HomeNewsOverviewAdapter) (recyclerView.adapter)

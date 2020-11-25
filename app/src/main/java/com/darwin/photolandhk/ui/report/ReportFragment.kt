@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.darwin.photolandhk.databinding.FragmentOverviewReportBinding
-import com.darwin.photolandhk.ui.PostBigOverviewAdapter
+import com.darwin.photolandhk.ui.ReportOverviewAdapter
 
 class ReportFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class ReportFragment : Fragment() {
         val binding = FragmentOverviewReportBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.reportRecyclerview.adapter = PostBigOverviewAdapter(PostBigOverviewAdapter.OnClickListener {
+        binding.reportRecyclerview.adapter = ReportOverviewAdapter(ReportOverviewAdapter.OnClickListener {
             viewModel.displayPostContent(it)
         })
 //        viewModel.navigateToSelectedProperty.observe(this, Observer {

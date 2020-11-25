@@ -9,7 +9,7 @@ import com.darwin.photolandhk.databinding.PostOverviewCardBigBinding
 import com.darwin.photolandhk.posts.PostContent
 import com.darwin.photolandhk.posts.wpAPIDateString2Date
 
-class PostBigOverviewAdapter(private val onClickListener: OnClickListener) : ListAdapter<PostContent, PostBigOverviewAdapter.PostViewHolder>(
+class ReportOverviewAdapter(private val onClickListener: OnClickListener) : ListAdapter<PostContent, ReportOverviewAdapter.PostViewHolder>(
     DiffCallback
 ) {
 
