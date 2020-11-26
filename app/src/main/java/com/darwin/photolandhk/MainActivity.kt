@@ -5,99 +5,82 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
+import androidx.fragment.app.Fragment
+import com.darwin.photolandhk.ui.DiscussionFragment
+import com.darwin.photolandhk.ui.EventsFragment
+import com.darwin.photolandhk.ui.home.HomeFragment
+import com.darwin.photolandhk.ui.news.NewsFragment
+import com.darwin.photolandhk.ui.report.ReportFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
 //    private val fragList: List<Fragment> = ArrayList<Fragment>(listOf(HomeFragment(),
 //       NewsFragment(), NewsFragment(), DiscussionFragment(), EventsFragment()))
 //    private var currentFragment: Fragment = Fragment()
 
-//    private val navListener: BottomNavigationView.OnNavigationItemSelectedListener =
-//        BottomNavigationView.OnNavigationItemSelectedListener {item ->
-//            loadPage(supportFragmentManager, selected_fragment = item.itemId)
-//            return@OnNavigationItemSelectedListener true
-//        }
+    private val IDs = listOf(
+        R.id.overview_home,
+        R.id.overview_report,
+        R.id.overview_news,
+        R.id.overview_discussion,
+        R.id.overview_events
+    )
+
+    private val navListener: BottomNavigationView.OnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener {item ->
+            loadFragmentById(item.itemId)
+            return@OnNavigationItemSelectedListener true
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.fragment_overview_container, fragList[0]).hide(fragList[0])
-//            .add(R.id.fragment_overview_container, fragList[1]).hide(fragList[1])
-////            .add(R.id.fragment_overview_container, fragList[2]).hide(fragList[2])
-//            .add(R.id.fragment_overview_container, fragList[3]).hide(fragList[3])
-//            .add(R.id.fragment_overview_container, fragList[4]).hide(fragList[4])
-//            .commit()
-//
-//        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
-//        bottomNav.setOnNavigationItemSelectedListener(navListener)
-//        bottomNav.selectedItemId = R.id.overview_home
-
-//        if (savedInstanceState == null) {
-//            val fragment = HomeFragment()
-//            supportFragmentManager.beginTransaction()
-//                .add(R.id.nav_host_fragment, fragment)
-//                .commit()
-//        }
-//
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.nav_host_fragment, ReportFragment(), "reportFrag")
-//            .hide(supportFragmentManager.findFragmentByTag("homeFrag")!!)
-
-
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
-        val navHostFragment: NavHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        NavigationUI.setupWithNavController(bottomNav, navHostFragment.navController)
-
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.fragment_overview_container, fragList[0]).hide(fragList[0])
-//            .add(R.id.fragment_overview_container, fragList[1]).hide(fragList[1])
-//            .add(R.id.fragment_overview_container, fragList[2]).hide(fragList[2])
-//            .add(R.id.fragment_overview_container, fragList[3]).hide(fragList[3])
-//            .add(R.id.fragment_overview_container, fragList[4]).hide(fragList[4])
-//            .commit()
-
-
-
-//        val navController = findNavController(R.id.nav_host_fragment)
-//        val navigator = KeepStateNavigator(this, navHostFragment.childFragmentManager, R.id.nav_host_fragment)
-//        navHostFragment.navController.navigatorProvider += navigator
-//
-//        navHostFragment.navController.setGraph(R.navigation.nav_graph)
-//
-//        NavigationUI.setupWithNavController(bottomNav, navHostFragment.navController)
+        bottomNav.setOnNavigationItemSelectedListener(navListener)
+        bottomNav.selectedItemId = R.id.overview_home
 
 //        MobileAds.initialize(this) {}
 //        createAds()
 
     }
 
-//     fun loadPage(fragmentManager: FragmentManager, selected_fragment: Int) {
-//         val frag = when (selected_fragment) {
-//            R.id.overview_home -> 0
-//            R.id.overview_report -> 1
-//            R.id.overview_news -> 2
-//            R.id.overview_discussion -> 3
-//            R.id.overview_events -> 4
-//            else -> 99
-//         }
-//         fragmentManager.beginTransaction()
-//             .hide(currentFragment)
-//             .show(fragList[frag])
-//             .commit()
-//         currentFragment = fragList[frag]
-//     }
+    fun loadFragmentById(id: Int) {
+        var transaction = supportFragmentManager.beginTransaction()
+        transaction =
+            if (supportFragmentManager.findFragmentByTag(id.toString()) == null)
+                transaction.add(R.id.fragment_overview_container, createCorrespondingFragment(id),id.toString())
+            else
+                transaction.show(supportFragmentManager.findFragmentByTag(id.toString())!!)
+        val currentFrag = getCurrentFragment()
+        if (currentFrag != null) transaction = transaction.hide(currentFrag)
+        transaction.commit()
+    }
 
-    fun updateBottomNav(id: Int){
+    fun createCorrespondingFragment(id: Int) = when (id) {
+        R.id.overview_home -> HomeFragment()
+        R.id.overview_report -> ReportFragment()
+        R.id.overview_news -> NewsFragment()
+        R.id.overview_discussion -> DiscussionFragment()
+        R.id.overview_events -> EventsFragment()
+        else -> Fragment()
+    }
+
+    fun getCurrentFragment(): Fragment? = run {
+        for (id in IDs) {
+            val frag = supportFragmentManager.findFragmentByTag(id.toString()) ?: continue
+            if (frag.isVisible) return frag
+        }
+        return null
+    }
+
+    fun updateBottomNav(id: Int) {
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNav.selectedItemId = id
     }
 
-    fun startBrowserLaowa(view: View){
+    fun startBrowserLaowa(view: View) {
         val url = "https://www.laowa.com.hk"
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)

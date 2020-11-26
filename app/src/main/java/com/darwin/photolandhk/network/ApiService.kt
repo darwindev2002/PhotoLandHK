@@ -62,10 +62,6 @@ interface ApiService {
 
 }
 
-suspend fun getFullList(count: Int, categoryId: Int){
-
-}
-
 val categoryList = mapOf("Uncategorized" to 1,
     "攝影分享" to 112,
     "攝影大事報" to 6,
@@ -100,5 +96,4 @@ object Api {
 enum class ApiStatus {LOADING, ERROR, DONE}
 
 val homeOverviewListSize = 8
-val MAX_POST = 100
 val LOAD_PER_TIME = 30
