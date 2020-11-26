@@ -16,9 +16,9 @@ class ReportViewModel : ViewModel() {
     private val _status = MutableLiveData<ApiStatus>()
     val status: LiveData<ApiStatus>
         get() = _status
-    private val _properties = MutableLiveData<List<PostContent>>()
-    val properties: LiveData<List<PostContent>>
-        get() = _properties
+    private val _posts = MutableLiveData<List<PostContent>>()
+    val posts: LiveData<List<PostContent>>
+        get() = _posts
     private val _navigateToSelectedProperty = MutableLiveData<PostContent>()
     val navigateToSelectedProperty: LiveData<PostContent>
         get() = _navigateToSelectedProperty
@@ -31,14 +31,14 @@ class ReportViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = ApiStatus.LOADING
             try {
-                val categoryId = categoryList.get("真．用家報告")
-                val count = Api.retrofitService.getCategoryPostCount(categoryId!!).count
-                _properties.value = Api.retrofitService.getPostList(pages=count,category=categoryId)
+                val categoryId = categoryList["真．用家報告"] ?: error("Error: category not found")
+                val count = Api.retrofitService.getCategoryPostCount(categoryId).count
+                _posts.value = Api.retrofitService.getPostList(pages=count,category=categoryId)
                 _status.value = ApiStatus.DONE
             } catch (e: Exception) {
 //                e.printStackTrace()
                 _status.value = ApiStatus.ERROR
-                _properties.value = ArrayList()
+                _posts.value = ArrayList()
             }
         }
     }

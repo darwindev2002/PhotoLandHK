@@ -1,4 +1,4 @@
-package com.darwin.photolandhk.ui
+package com.darwin.photolandhk.ui.report
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -28,7 +28,8 @@ class ReportOverviewAdapter(private val onClickListener: OnClickListener) : List
         }
 
         override fun areItemsTheSame(oldItem: PostContent, newItem: PostContent): Boolean {
-            return oldItem === newItem
+//            return oldItem === newItem
+            return true
         }
     }
 

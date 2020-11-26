@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.darwin.photolandhk.R
 import com.darwin.photolandhk.databinding.FragmentOverviewReportBinding
-import com.darwin.photolandhk.ui.ReportOverviewAdapter
 
 class ReportFragment : Fragment() {
 
@@ -26,12 +28,12 @@ class ReportFragment : Fragment() {
         binding.reportRecyclerview.adapter = ReportOverviewAdapter(ReportOverviewAdapter.OnClickListener {
             viewModel.displayPostContent(it)
         })
-//        viewModel.navigateToSelectedProperty.observe(this, Observer {
-//            if (it != null) {
-//                activity?.findNavController(R.id.nav_graph)?.navigate(ReportFragmentDirections.actionShowPost(it))
-//                viewModel.displayPostContentComplete()
-//            }
-//        })
+        viewModel.navigateToSelectedProperty.observe(this, Observer {
+            if (it != null) {
+                activity?.findNavController(R.id.nav_graph)?.navigate(ReportFragmentDirections.actionShowPost(it))
+                viewModel.displayPostContentComplete()
+            }
+        })
         return binding.root
     }
 

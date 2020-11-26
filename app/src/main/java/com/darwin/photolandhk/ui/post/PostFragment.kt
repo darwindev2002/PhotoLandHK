@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
 import com.darwin.photolandhk.databinding.FragmentPostBinding
 import com.darwin.photolandhk.posts.PostContent
 
@@ -30,11 +29,13 @@ class PostFragment(post: PostContent) : Fragment() {
         val binding = FragmentPostBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
-        val post = PostFragmentArgs.fromBundle(arguments!!).selectedProperty
-        val viewModelFactory = PostViewModelFactory(post, application)
-        binding.viewModel = ViewModelProvider(this, viewModelFactory).get(PostViewModel::class.java)
+//        val post = PostFragmentArgs.fromBundle(arguments!!).selectedPost
+
+//        val viewModelFactory = PostViewModelFactory(post, application)
+//        binding.viewModel = ViewModelProvider(this, viewModelFactory).get(PostViewModel::class.java)
 
         return super.onCreateView(inflater, container, savedInstanceState)
+        TODO("Handle null pointer from arguments!!")
     }
 
 //    override fun onCreate(savedInstanceState: Bundle?) {

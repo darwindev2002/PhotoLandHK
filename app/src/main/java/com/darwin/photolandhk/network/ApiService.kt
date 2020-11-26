@@ -52,12 +52,17 @@ interface ApiService {
 
     @GET("wp-json/wp/v2/posts")
     suspend fun getPostList(@Query("per_page") pages: Int = 30,
+                            @Query("page") page: Int = 1,
                             @Query("categories") category: Int,
                             @Query("_fields") fields: String = "id,date,modified,title,content,author,categories,tags,author_info,featured_media,featured_image_src"): List<PostContent>
 
 //    @GET("wp-json/wp/v2/posts/{id}")
 //    suspend fun getPost(@Path("id") id: Int,
 //                        @Query("_fields") fields: String = "id,date,modified,title,content,author,categories,tags,author_info"): PostContent
+
+}
+
+suspend fun getFullList(count: Int, categoryId: Int){
 
 }
 
@@ -95,3 +100,5 @@ object Api {
 enum class ApiStatus {LOADING, ERROR, DONE}
 
 val homeOverviewListSize = 8
+val MAX_POST = 100
+val LOAD_PER_TIME = 30

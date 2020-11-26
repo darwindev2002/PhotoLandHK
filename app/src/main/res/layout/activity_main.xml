@@ -9,27 +9,30 @@
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/titleToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_above="@+id/fragment_overview_container">
+        android:background="@color/colorPrimary"
+        android:text="@string/app_name"
+        android:textSize="16sp"
+        app:titleTextColor="@color/colorText" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/app_name"
-            app:titleTextColor="@color/colorText"
-            android:textSize="16sp"
-            android:id="@+id/titleToolbar"
-            android:background="@color/colorPrimary"/>
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/fragment_overview_container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_above="@+id/bottom_navigation" />-->
 
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/fragment_overview_container"
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation" />
+        android:layout_above="@id/bottom_navigation"
+        android:layout_below="@id/titleToolbar"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

@@ -9,16 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.darwin.photolandhk.MainActivity
 import com.darwin.photolandhk.R
 import com.darwin.photolandhk.databinding.FragmentOverviewHomeBinding
-import com.darwin.photolandhk.ui.home.home_cards.HomeDiscussionOverviewAdapter
-import com.darwin.photolandhk.ui.home.home_cards.HomeNewsOverviewAdapter
-import com.darwin.photolandhk.ui.home.home_cards.HomeReportOverviewAdapter
-import com.darwin.photolandhk.ui.report.HomeDiscussionViewModel
-import com.darwin.photolandhk.ui.report.HomeNewsViewModel
-import com.darwin.photolandhk.ui.report.HomeReportViewModel
+import com.darwin.photolandhk.ui.home.home_cards.*
 
 class HomeFragment : Fragment() {
 
@@ -59,8 +54,10 @@ class HomeFragment : Fragment() {
 
         val viewMore: Button = binding.root.findViewById(R.id.button_more_news)
         viewMore.setOnClickListener{
-            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_news)
-            (activity as MainActivity).updateBottomNav(R.id.nav_news)
+            val action = HomeFragmentDirections.actionHomeFragmentToNewsFragment()
+            findNavController().navigate(action)
+//            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_news)
+//            (activity as MainActivity).updateBottomNav(R.id.nav_news)
         }
     }
 
@@ -72,8 +69,8 @@ class HomeFragment : Fragment() {
 
         val viewMore: Button = binding.root.findViewById(R.id.button_more_report)
         viewMore.setOnClickListener{
-            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_report)
-            (activity as MainActivity).updateBottomNav(R.id.nav_report)
+//            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.overview_report)
+//            (activity as MainActivity).updateBottomNav(R.id.overview_report)
         }
     }
 
@@ -85,8 +82,8 @@ class HomeFragment : Fragment() {
 
         val viewMore: Button = binding.root.findViewById(R.id.button_more_discussion)
         viewMore.setOnClickListener{
-            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.nav_discussion)
-            (activity as MainActivity).updateBottomNav(R.id.nav_discussion)
+//            (activity as MainActivity).loadPage(this.parentFragmentManager, R.id.overview_discussion)
+//            (activity as MainActivity).updateBottomNav(R.id.overview_discussion)
         }
     }
 

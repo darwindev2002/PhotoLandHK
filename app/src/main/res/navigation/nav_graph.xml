@@ -3,26 +3,97 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/reportFragment">
+    app:startDestination="@id/overview_home">
 
     <fragment
-        android:id="@+id/reportFragment"
-        android:name="com.darwin.photolandhk.ui.report.ReportFragment"
-        android:label="fragment_overview_report"
-        tools:layout="fragment_overview_report" >
+        android:id="@+id/overview_home"
+        android:name="com.darwin.photolandhk.ui.home.HomeFragment"
+        android:label="fragment_overview_home"
+        tools:layout="@layout/fragment_overview_home">
+
         <action
-            android:id="@+id/action_showPost"
-            app:destination="@id/postFragment" />
+            android:id="@+id/action_homeFragment_to_newsFragment"
+            app:destination="@id/overview_news" />
+        <action
+            android:id="@+id/action_homeFragment_to_reportFragment"
+            app:destination="@id/overview_report" />
+        <action
+            android:id="@+id/action_homeFragment_to_postFragment"
+            app:destination="@id/post" />
+        <action
+            android:id="@+id/action_homeFragment_to_discussionFragment"
+            app:destination="@id/overview_discussion" />
+        <action
+            android:id="@+id/action_homeFragment_to_reportFragment2"
+            app:destination="@id/overview_report" />
     </fragment>
 
     <fragment
-        android:id="@+id/postFragment"
+        android:id="@+id/overview_report"
+        android:name="com.darwin.photolandhk.ui.report.ReportFragment"
+        android:label="fragment_overview_report"
+        tools:layout="@layout/fragment_overview_report" >
+        <action
+            android:id="@+id/action_showPost"
+            app:destination="@id/post" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/overview_news"
+        android:name="com.darwin.photolandhk.ui.news.NewsFragment"
+        android:label="fragment_overview_news"
+        tools:layout="@layout/fragment_overview_news" >
+        <action
+            android:id="@+id/action_showPost"
+            app:destination="@id/post" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/overview_discussion"
+        android:name="com.darwin.photolandhk.ui.DiscussionFragment"
+        android:label="fragment_overview_discussion"
+        tools:layout="@layout/fragment_overview_discussion" >
+        <action
+            android:id="@+id/action_showPost"
+            app:destination="@id/post" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/overview_events"
+        android:name="com.darwin.photolandhk.ui.EventsFragment"
+        android:label="fragment_overview_events"
+        tools:layout="@layout/fragment_overview_events" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/post"
         android:name="com.darwin.photolandhk.ui.post.PostFragment"
         android:label="fragment_post"
         tools:layout="@layout/fragment_post">
         <argument
-            android:name="selectedProperty"
+            android:name="selectedPost"
             app:argType="com.darwin.photolandhk.posts.PostContent" />
     </fragment>
+
+<!--    <keep_state_fragment-->
+<!--        android:id="@+id/overview_home"-->
+<!--        android:name="com.darwin.photolandhk.ui.home.HomeFragment"-->
+<!--        android:label="fragment_overview_home" />-->
+<!--    <keep_state_fragment-->
+<!--        android:id="@+id/overview_report"-->
+<!--        android:name="com.darwin.photolandhk.ui.report.ReportFragment"-->
+<!--        android:label="fragment_overview_report" />-->
+<!--    <keep_state_fragment-->
+<!--        android:id="@+id/overview_news"-->
+<!--        android:name="com.darwin.photolandhk.depreciated.news.NewsFragment"-->
+<!--        android:label="fragment_overview_news" />-->
+<!--    <keep_state_fragment-->
+<!--        android:id="@+id/overview_discussion"-->
+<!--        android:name="com.darwin.photolandhk.ui.DiscussionFragment"-->
+<!--        android:label="fragment_overview_discussion" />-->
+<!--    <keep_state_fragment-->
+<!--        android:id="@+id/overview_events"-->
+<!--        android:name="com.darwin.photolandhk.ui.EventsFragment"-->
+<!--        android:label="fragment_overview_events" />-->
 
 </navigation>

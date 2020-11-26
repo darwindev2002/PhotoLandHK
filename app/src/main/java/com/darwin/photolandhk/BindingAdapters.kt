@@ -9,10 +9,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.darwin.photolandhk.network.ApiStatus
 import com.darwin.photolandhk.posts.PostContent
-import com.darwin.photolandhk.ui.ReportOverviewAdapter
 import com.darwin.photolandhk.ui.home.home_cards.HomeDiscussionOverviewAdapter
 import com.darwin.photolandhk.ui.home.home_cards.HomeNewsOverviewAdapter
 import com.darwin.photolandhk.ui.home.home_cards.HomeReportOverviewAdapter
+import com.darwin.photolandhk.ui.news.NewsOverviewAdapter
+import com.darwin.photolandhk.ui.report.ReportOverviewAdapter
 
 @BindingAdapter("imageUrl","overview", requireAll = false)
 fun bindImage(imgView: ImageView, imgUrl: String?, isHomeOverview: Boolean = false) {
@@ -34,11 +35,9 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<PostContent>?) {
         is HomeReportOverviewAdapter -> (recyclerView.adapter as HomeReportOverviewAdapter).submitList(data)
         is HomeDiscussionOverviewAdapter -> (recyclerView.adapter as HomeDiscussionOverviewAdapter).submitList(data)
         is ReportOverviewAdapter -> (recyclerView.adapter as ReportOverviewAdapter).submitList(data)
+        is NewsOverviewAdapter -> (recyclerView.adapter as NewsOverviewAdapter).submitList(data)
         else -> null
     }
-//    if (recyclerView.adapter is HomeNewsOverviewAdapter) (recyclerView.adapter)
-//    val adapter = recyclerView.adapter as PostBigOverviewAdapter
-//    adapter.submitList(data)
 }
 
 @BindingAdapter("apiStatus")
