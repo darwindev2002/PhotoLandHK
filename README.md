@@ -6,7 +6,7 @@ PhotoLandHK is an android app created for photographers to view updates on photo
 * [General Info](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
-* [Implemented Open-source Library](#implemented-open-source-library)
+<!-- * [Implemented Open-source Library](#implemented-open-source-library) --->
 * [Getting Started](#getting-started)
 * [Features](#features)
 * [Todo list](#todo-list)
@@ -23,19 +23,27 @@ In this app you can view:
 Home page
 
 ![Home Page Sample Image](images/homePageSample.png)
+
+Report Overview Page
+
+![Report Page Sample Image](images/reportPageSample.png)
+
+News Overview Page
+
+![News Page Sample Image](images/newsPageSample.png)
 	
 ## Technologies
 Project is created with:
-* Kotlin version: 1.3.72
+* Kotlin version: 1.4.10
 
-## Implemented Open-source Library
+<!-- ## Implemented Open-source Library
 Project has implemented:
-* CarouselView from https://github.com/sayyam/carouselview
+* CarouselView from https://github.com/sayyam/carouselview --->
 	
 ## Getting Started
 1.  Pull down the code locally.
 2.  Open Android Studio and select 'Open an existing Android Studio Project'
-5.  Run the app.
+3.  Run the app.
 
 ## Features
 * User-friendly home page for reading news and navigating to different sections
@@ -43,10 +51,9 @@ Project has implemented:
 
 ## Todo list
 * Gear review section
-* News section
-* Skills discussion section
 * Event calender
 * Link to cloud database for real-time updates
+* Content Descriptions for ImageViews
 
 ## Contact
 Created by @darwindev2002 - feel free to contact me!
