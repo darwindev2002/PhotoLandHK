@@ -1,8 +1,11 @@
 package com.darwin.photolandhk
 
 import android.view.View
+import android.webkit.WebView
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.net.toUri
+import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -15,8 +18,8 @@ import com.darwin.photolandhk.ui.home.home_cards.HomeReportOverviewAdapter
 import com.darwin.photolandhk.ui.news.NewsOverviewAdapter
 import com.darwin.photolandhk.ui.report.ReportOverviewAdapter
 
-@BindingAdapter("imageUrl","overview", requireAll = false)
-fun bindImage(imgView: ImageView, imgUrl: String?, isHomeOverview: Boolean = false) {
+@BindingAdapter("imageUrl")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         val reqOptions = RequestOptions().fitCenter().override(390,220).placeholder(R.drawable.loading_img).error(R.drawable.ic_broken_image)
@@ -38,6 +41,26 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<PostContent>?) {
         is NewsOverviewAdapter -> (recyclerView.adapter as NewsOverviewAdapter).submitList(data)
         else -> null
     }
+}
+
+@BindingAdapter("postContent")
+fun bindPostContent(webView: WebView, data: String) {
+//    textView.text = HtmlCompat.fromHtml(data,HtmlCompat.FROM_HTML_MODE_COMPACT)
+//    textView.setInitialScale(0)
+    webView.settings.javaScriptEnabled = true
+    webView.settings.loadWithOverviewMode = true
+//    textView.settings.useWideViewPort = false
+    webView.loadDataWithBaseURL(null,
+        "<style>img{display: block;height: auto;max-width: 100%;}</style>" +
+            "<style>iframe{display: block;height: auto;max-width: 100%;}</style>" +
+            "<style>video{display: block;height: auto;max-width: 100%;}</style>" + data,
+        "text/HTML","UTF-8",null)
+    println(data)
+}
+
+@BindingAdapter("text")
+fun bindText(textView: TextView, data: String) {
+    textView.text = HtmlCompat.fromHtml(data, HtmlCompat.FROM_HTML_MODE_LEGACY)
 }
 
 @BindingAdapter("apiStatus")

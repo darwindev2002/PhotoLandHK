@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import com.darwin.photolandhk.MainActivity
 import com.darwin.photolandhk.R
 import com.darwin.photolandhk.databinding.FragmentOverviewReportBinding
 
@@ -28,10 +28,16 @@ class ReportFragment : Fragment() {
         binding.reportRecyclerview.adapter = ReportOverviewAdapter(ReportOverviewAdapter.OnClickListener {
             viewModel.displayPostContent(it)
         })
-        viewModel.navigateToSelectedProperty.observe(this, Observer {
+
+        val swipeLayout = binding.swipeContainerReport
+        swipeLayout.setOnRefreshListener {
+            viewModel.getReportOverview()
+            swipeLayout.isRefreshing = false
+        }
+
+        viewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                activity?.findNavController(R.id.nav_graph)?.navigate(ReportFragmentDirections.actionShowPost(it))
-                viewModel.displayPostContentComplete()
+                (activity as MainActivity).updateFragment(R.id.post,it)
             }
         })
         return binding.root

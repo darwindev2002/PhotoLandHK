@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.darwin.photolandhk.databinding.HomeNewsItemBinding
 import com.darwin.photolandhk.posts.PostContent
 
-class HomeReportOverviewAdapter() :
+class HomeReportOverviewAdapter(private val onClickListener: OnClickListener) :
     ListAdapter<PostContent, HomeReportOverviewAdapter.HomeReportPostViewHolder>(
         DiffCallback
     ) {
@@ -43,8 +43,7 @@ class HomeReportOverviewAdapter() :
     override fun onBindViewHolder(holder: HomeReportPostViewHolder, position: Int) {
         val item = getItem(position)
         holder.itemView.setOnClickListener {
-//            onClickListener.onClick(item)
-//            it.context.startActivity(Intent(it.context, PostActivity::class.java).putExtra("post", item))
+            onClickListener.onClick(item)
         }
         holder.bind(item)
     }

@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.darwin.photolandhk.MainActivity
 import com.darwin.photolandhk.R
 import com.darwin.photolandhk.databinding.FragmentOverviewNewsBinding
 
-class NewsFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
+class NewsFragment : Fragment(){
 
     private val viewModel: NewsViewModel by lazy {
         ViewModelProvider(this).get(NewsViewModel::class.java)
@@ -30,22 +30,18 @@ class NewsFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
             viewModel.displayPostContent(it)
         })
 
-        val swipeLayout: SwipeRefreshLayout = binding.root.findViewById(R.id.swipe_container_news)
+        val swipeLayout = binding.swipeContainerNews
         swipeLayout.setOnRefreshListener {
-            viewModel.getNewsOverview(swipeLayout)
+            viewModel.getNewsOverview()
+            swipeLayout.isRefreshing = false
         }
 
-        viewModel.navigateToSelectedProperty.observe(this, Observer {
+        viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                activity?.findNavController(R.id.nav_graph)?.navigate(NewsFragmentDirections.actionShowPost(it))
-                viewModel.displayPostContentComplete()
+                (activity as MainActivity).updateFragment(R.id.post,it)
             }
         })
         return binding.root
-    }
-
-    override fun onRefresh(){
-
     }
 
 }

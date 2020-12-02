@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.darwin.photolandhk.databinding.HomeDiscussionItemBinding
 import com.darwin.photolandhk.posts.PostContent
 
-class HomeDiscussionOverviewAdapter() :
+class HomeDiscussionOverviewAdapter(private val onClickListener: OnClickListener) :
     ListAdapter<PostContent, HomeDiscussionOverviewAdapter.HomeDiscussionPostViewHolder>(
         DiffCallback
     ) {
@@ -43,7 +43,7 @@ class HomeDiscussionOverviewAdapter() :
     override fun onBindViewHolder(holder: HomeDiscussionPostViewHolder, position: Int) {
         val item = getItem(position)
         holder.itemView.setOnClickListener {
-//            onClickListener.onClick(item)
+            onClickListener.onClick(item)
 //            it.context.startActivity(Intent(it.context, PostActivity::class.java).putExtra("post", item))
         }
         holder.bind(item)
@@ -52,5 +52,4 @@ class HomeDiscussionOverviewAdapter() :
     class OnClickListener(val clickListener: (post: PostContent) -> Unit) {
         fun onClick(post: PostContent) = clickListener(post)
     }
-
 }

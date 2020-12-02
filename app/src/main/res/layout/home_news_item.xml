@@ -42,7 +42,7 @@
             android:layout_below="@id/news_recyclerview_imageView"
             android:textColor="@color/colorHomeWhiteCardBackground"
             tools:text="Yongnuo 推出具有自動對焦功能的全片幅 35mm f / 2 Sony E mount 鏡頭"
-            android:text="@{post.title.rendered}"
+            app:text="@{post.title.rendered}"
             android:maxLines="2"
             android:ellipsize="end"/>
 

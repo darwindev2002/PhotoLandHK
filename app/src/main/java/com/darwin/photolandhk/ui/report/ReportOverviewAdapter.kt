@@ -43,7 +43,6 @@ class ReportOverviewAdapter(private val onClickListener: OnClickListener) : List
         val item = getItem(position)
         holder.itemView.setOnClickListener {
             onClickListener.onClick(item)
-//            it.context.startActivity(Intent(it.context, PostActivity::class.java).putExtra("post", item))
         }
         holder.bind(item)
     }

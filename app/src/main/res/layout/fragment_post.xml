@@ -2,33 +2,34 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    
+
     <data>
+        <import type="androidx.core.text.HtmlCompat" />
         <variable
             name="viewModel"
             type="com.darwin.photolandhk.ui.post.PostViewModel" />
     </data>
 
     <LinearLayout
-        android:id="@+id/postLayout"
+        android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        <!--        <com.google.android.material.appbar.AppBarLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">-->
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/postToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:textSize="16sp"
-                app:titleTextColor="@color/colorText" />
+        <!--            <androidx.appcompat.widget.Toolbar-->
+        <!--                android:id="@+id/postToolbar"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="?attr/actionBarSize"-->
+        <!--                android:textSize="16sp"-->
+        <!--                app:titleTextColor="@color/colorText" />-->
 
-        </com.google.android.material.appbar.AppBarLayout>
+        <!--        </com.google.android.material.appbar.AppBarLayout>-->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -36,19 +37,33 @@
             android:orientation="vertical"
             android:padding="5dp">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitStart"
-                android:adjustViewBounds="true"
-                tools:srcCompat="@drawable/yongnuo_35_2_e_mount_af"
-                app:imageUrl="@{viewModel.selectedPost.featured_image_src}" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="This is content."/>
+<!--                <ImageView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:scaleType="fitStart"-->
+<!--                    app:imageUrl="@{viewModel.selectedPost.featured_image_src}"-->
+<!--                    tools:srcCompat="@drawable/yongnuo_35_2_e_mount_af" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:postContent="@{viewModel.selectedPost.content.rendered}"-->
+<!--                    tools:text="This is content." />-->
+
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:postContent="@{viewModel.selectedPost.content.rendered}"
+                    tools:text="This is content." />
+
+            </LinearLayout>
 
         </ScrollView>
 

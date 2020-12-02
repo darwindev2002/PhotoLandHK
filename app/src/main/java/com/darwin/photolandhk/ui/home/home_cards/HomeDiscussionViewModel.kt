@@ -45,12 +45,12 @@ class HomeDiscussionViewModel : ViewModel() {
         }
     }
 
-//    fun displayPostContent(post: PostContent) {
-//        _navigateToSelectedProperty.value = post
-//    }
+    fun displayPostContent(post: PostContent) {
+        _navigateToSelectedPost.value = post
+    }
 //
 //    fun displayPostContentComplete() {
-//        _navigateToSelectedProperty.value = null
+//        _navigateToSelectedPost.value = null
 //    }
 
 }

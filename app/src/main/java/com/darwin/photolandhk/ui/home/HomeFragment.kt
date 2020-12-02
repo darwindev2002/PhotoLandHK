@@ -8,11 +8,13 @@ import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.darwin.photolandhk.MainActivity
 import com.darwin.photolandhk.R
 import com.darwin.photolandhk.databinding.FragmentOverviewHomeBinding
+import com.darwin.photolandhk.ui.OverviewFragment
 import com.darwin.photolandhk.ui.home.home_cards.*
 
 class HomeFragment : Fragment() {
@@ -46,39 +48,60 @@ class HomeFragment : Fragment() {
 //        carouselView.setImageListener { position, imageView -> imageView.setImageResource(carouselViewImages[position]) }
 //    }
 
-    fun createNewsRecycler(binding: FragmentOverviewHomeBinding){
+    private fun createNewsRecycler(binding: FragmentOverviewHomeBinding){
         binding.lifecycleOwner = this
         binding.homeNewsCard.viewModel = newsViewModel
+        newsViewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                (activity as MainActivity).updateFragment(R.id.post,it)
+            }
+        })
         binding.homeNewsCard.homeNewsRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.homeNewsCard.homeNewsRecyclerview.adapter = HomeNewsOverviewAdapter()
+        binding.homeNewsCard.homeNewsRecyclerview.adapter = HomeNewsOverviewAdapter(HomeNewsOverviewAdapter.OnClickListener {
+            newsViewModel.displayPostContent(it)
+        })
 
         val viewMore: Button = binding.root.findViewById(R.id.button_more_news)
         viewMore.setOnClickListener{
-            (activity as MainActivity).updateBottomNav(R.id.overview_news)
+            (parentFragmentManager.findFragmentByTag(R.id.overview_container.toString()) as OverviewFragment).updateBottomNav(R.id.overview_news)
         }
     }
 
-    fun createReportRecycler(binding: FragmentOverviewHomeBinding){
+    private fun createReportRecycler(binding: FragmentOverviewHomeBinding){
         binding.lifecycleOwner = this
         binding.homeReportCard.viewModel = reportViewModel
+        reportViewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                (activity as MainActivity).updateFragment(R.id.post,it)
+            }
+        })
         binding.homeReportCard.homeReportRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.homeReportCard.homeReportRecyclerview.adapter = HomeReportOverviewAdapter()
+        binding.homeReportCard.homeReportRecyclerview.adapter = HomeReportOverviewAdapter(HomeReportOverviewAdapter.OnClickListener {
+            reportViewModel.displayPostContent(it)
+        })
 
         val viewMore: Button = binding.root.findViewById(R.id.button_more_report)
         viewMore.setOnClickListener{
-            (activity as MainActivity).updateBottomNav(R.id.overview_report)
+            (parentFragmentManager.findFragmentByTag(R.id.overview_container.toString()) as OverviewFragment).updateBottomNav(R.id.overview_report)
         }
     }
 
-    fun createDiscussionRecycler(binding: FragmentOverviewHomeBinding){
+    private fun createDiscussionRecycler(binding: FragmentOverviewHomeBinding){
         binding.lifecycleOwner = this
         binding.homeDiscussionCard.viewModel = discussionViewModel
+        discussionViewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                (activity as MainActivity).updateFragment(R.id.post,it)
+            }
+        })
         binding.homeDiscussionCard.homeDiscussionRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.homeDiscussionCard.homeDiscussionRecyclerview.adapter = HomeDiscussionOverviewAdapter()
+        binding.homeDiscussionCard.homeDiscussionRecyclerview.adapter = HomeDiscussionOverviewAdapter(HomeDiscussionOverviewAdapter.OnClickListener {
+            discussionViewModel.displayPostContent(it)
+        })
 
         val viewMore: Button = binding.root.findViewById(R.id.button_more_discussion)
         viewMore.setOnClickListener{
-            (activity as MainActivity).updateBottomNav(R.id.overview_discussion)
+            (parentFragmentManager.findFragmentByTag(R.id.overview_container.toString()) as OverviewFragment).updateBottomNav(R.id.overview_discussion)
         }
     }
 

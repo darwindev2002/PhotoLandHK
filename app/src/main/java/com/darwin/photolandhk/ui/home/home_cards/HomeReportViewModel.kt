@@ -45,12 +45,8 @@ class HomeReportViewModel : ViewModel() {
         }
     }
 
-//    fun displayPostContent(post: PostContent) {
-//        _navigateToSelectedProperty.value = post
-//    }
-//
-//    fun displayPostContentComplete() {
-//        _navigateToSelectedProperty.value = null
-//    }
+    fun displayPostContent(post: PostContent) {
+        _navigateToSelectedPost.value = post
+    }
 
 }
