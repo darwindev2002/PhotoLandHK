@@ -31,8 +31,7 @@ xmlns:tools="http://schemas.android.com/tools" >
             tools:srcCompat="@drawable/cshine_942x135"
             android:scaleType="centerCrop"
             android:adjustViewBounds="false"
-            app:imageUrl="@{post.featured_image_src}"
-            app:overview="@{isHomeOverview}"/>
+            app:imageUrl="@{post.featured_image_src}" />
 
         <TextView
             android:id="@+id/discussion_recyclerview_title"

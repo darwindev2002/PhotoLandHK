@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity() {
      * Update fragment containers
      */
     fun updateFragment(id: Int, post: PostContent? = null) {
+        if (getCurrentFragment() != null && id == overviewFragment.currentVisibleFragmentByID) return
         val transaction = supportFragmentManager.beginTransaction()
         // Navigate to PostFragment
         if (id == R.id.post) transaction.add(
@@ -136,22 +137,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         transaction.commit()
-//        if (showingPost != null) {
-//            supportFragmentManager.beginTransaction().remove(showingPost!!).commit()
-//        }
-//        if (id != R.id.post) {
-//            loadOverivewFragmentById(id)
-//        } else {
-//            showingPost = PostFragment(post!!)
-//            supportFragmentManager.beginTransaction()
-//                .replace(
-//                    R.id.main_container,
-//                    PostFragment(post!!),
-//                    R.id.overview_container.toString()
-//                )
-//                .addToBackStack(R.id.overview_container.toString())
-//                .commit()
-//        }
     }
 
     private fun startBrowserLaowa(view: View) {

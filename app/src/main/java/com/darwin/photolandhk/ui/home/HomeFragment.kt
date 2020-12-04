@@ -49,7 +49,12 @@ class HomeFragment : Fragment() {
 //    }
 
     private fun createNewsRecycler(binding: FragmentOverviewHomeBinding){
+        val skeletonLayout: View = binding.root.findViewById(R.id.skeleton_list_small)
+        skeletonLayout.visibility = View.VISIBLE
+        skeletonLayout.bringToFront()
+
         binding.lifecycleOwner = this
+        newsViewModel.skeletonView = skeletonLayout
         binding.homeNewsCard.viewModel = newsViewModel
         newsViewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
             if (it != null) {
@@ -68,7 +73,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun createReportRecycler(binding: FragmentOverviewHomeBinding){
+        val skeletonLayout: View = binding.root.findViewById(R.id.skeleton_list_small)
+        skeletonLayout.visibility = View.VISIBLE
+        skeletonLayout.bringToFront()
+
         binding.lifecycleOwner = this
+        reportViewModel.skeletonView = skeletonLayout
         binding.homeReportCard.viewModel = reportViewModel
         reportViewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
             if (it != null) {
@@ -87,7 +97,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun createDiscussionRecycler(binding: FragmentOverviewHomeBinding){
+        val skeletonLayout: View = binding.root.findViewById(R.id.skeleton_list_small)
+        skeletonLayout.visibility = View.VISIBLE
+        skeletonLayout.bringToFront()
+
         binding.lifecycleOwner = this
+        discussionViewModel.skeletonView = skeletonLayout
         binding.homeDiscussionCard.viewModel = discussionViewModel
         discussionViewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
             if (it != null) {

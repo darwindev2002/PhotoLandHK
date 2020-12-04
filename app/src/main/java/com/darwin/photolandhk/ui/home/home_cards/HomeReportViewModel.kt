@@ -1,5 +1,6 @@
 package com.darwin.photolandhk.ui.home.home_cards
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,6 +26,8 @@ class HomeReportViewModel : ViewModel() {
     val navigateToSelectedPost: LiveData<PostContent>
         get() = _navigateToSelectedPost
 
+    lateinit var skeletonView: View
+
     init {
         getReportSmallOverview()
     }
@@ -37,6 +40,7 @@ class HomeReportViewModel : ViewModel() {
                 val count = min(Api.retrofitService.getCategoryPostCount(categoryId).count, homeOverviewListSize)
                 _posts.value = Api.retrofitService.getPostList(pages=count,category=categoryId)
                 _status.value = ApiStatus.DONE
+                skeletonView.visibility = View.GONE
             } catch (e: Exception) {
 //                e.printStackTrace()
                 _status.value = ApiStatus.ERROR

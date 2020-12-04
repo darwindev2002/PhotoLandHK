@@ -16,13 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@color/colorHomeDarkCardBackground">
+        app:cardBackgroundColor="@color/colorHomeWhiteCardBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="8dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -37,26 +37,31 @@
                 <Button
                     android:id="@+id/button_more_news"
                     style="@style/HomeCardMore"
-                    android:background="@color/colorHomeDarkCardBackground"
+                    android:background="@color/colorHomeWhiteCardBackground"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:textColor="@color/colorNews" />
 
             </RelativeLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorHomeWhiteCardBackground">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <include layout="@layout/skeleton_list_white_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/home_news_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:listData="@{viewModel.posts}"
                     android:clipToPadding="false" />
 
-            </ScrollView>
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
         <ImageView

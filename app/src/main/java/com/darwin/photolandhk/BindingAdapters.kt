@@ -18,11 +18,12 @@ import com.darwin.photolandhk.ui.home.home_cards.HomeReportOverviewAdapter
 import com.darwin.photolandhk.ui.news.NewsOverviewAdapter
 import com.darwin.photolandhk.ui.report.ReportOverviewAdapter
 
-@BindingAdapter("imageUrl")
-fun bindImage(imgView: ImageView, imgUrl: String?) {
+@BindingAdapter("imageUrl","overview", requireAll = false)
+fun bindImage(imgView: ImageView, imgUrl: String?, isHomeOverview: Boolean = false) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        val reqOptions = RequestOptions().fitCenter().override(390,220).placeholder(R.drawable.loading_img).error(R.drawable.ic_broken_image)
+        val reqOptions = if (isHomeOverview) RequestOptions().fitCenter().override(320,180).error(R.drawable.ic_broken_image)
+                               else RequestOptions().fitCenter().override(640,360).error(R.drawable.ic_broken_image)
         Glide.with(imgView.context)
             .asBitmap()
             .apply(reqOptions)
