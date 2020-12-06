@@ -1,5 +1,7 @@
 package com.darwin.photolandhk.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +37,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_overview_home, container, false) as FragmentOverviewHomeBinding
+
+        binding.adHeader.setOnClickListener {
+            startBrowserLaowa(it)
+        }
 
         createNewsRecycler(binding)
         createReportRecycler(binding)
@@ -118,6 +124,13 @@ class HomeFragment : Fragment() {
         viewMore.setOnClickListener{
             (parentFragmentManager.findFragmentByTag(R.id.overview_container.toString()) as OverviewFragment).updateBottomNav(R.id.overview_discussion)
         }
+    }
+
+    private fun startBrowserLaowa(view: View) {
+        val url = "https://www.laowa.com.hk"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
     }
 
 }

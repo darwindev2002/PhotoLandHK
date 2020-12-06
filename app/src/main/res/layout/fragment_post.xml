@@ -4,10 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="androidx.core.text.HtmlCompat" />
         <variable
             name="viewModel"
             type="com.darwin.photolandhk.ui.post.PostViewModel" />
+        <variable
+            name="datePublished"
+            type="String" />
+        <variable
+            name="isTrue"
+            type="Boolean" />
     </data>
 
     <LinearLayout
@@ -15,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:background="#FFFFFF">
 
         <!--        <com.google.android.material.appbar.AppBarLayout-->
         <!--            android:layout_width="match_parent"-->
@@ -34,12 +40,16 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:isScrollContainer="false"
                 android:orientation="vertical">
 
 <!--                <ImageView-->
@@ -50,12 +60,61 @@
 <!--                    app:imageUrl="@{viewModel.selectedPost.featured_image_src}"-->
 <!--                    tools:srcCompat="@drawable/yongnuo_35_2_e_mount_af" />-->
 
-<!--                <TextView-->
-<!--                    android:id="@+id/textView"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:postContent="@{viewModel.selectedPost.content.rendered}"-->
-<!--                    tools:text="This is content." />-->
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    app:text="@{viewModel.selectedPost.title.rendered}"
+                    tools:text="This is title."
+                    android:layout_marginBottom="5dp"
+                    android:textSize="16sp"
+                    android:textColor="#303336"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="12dp"
+                        android:layout_marginEnd="5dp"
+                        app:cardElevation="0dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:imageUrl="@{viewModel.theAuthorThumbnailURL}"
+                            app:isAuthorThumbnail="@{isTrue}"
+                            tools:srcCompat="@tools:sample/avatars" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewModel.selectedPost.author_info.display_name}"
+                        tools:text="ArLing"
+                        android:layout_marginEnd="3dp"
+                        android:textColor="#353535"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" · "
+                        android:textStyle="bold"
+                        android:layout_marginEnd="3dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="@{datePublished}"
+                        tools:text="2天前發佈"
+                        android:textColor="#404040"/>
+                </LinearLayout>
 
                 <WebView
                     android:layout_width="match_parent"

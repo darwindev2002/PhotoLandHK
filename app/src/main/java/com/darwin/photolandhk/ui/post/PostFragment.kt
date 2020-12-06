@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.darwin.photolandhk.databinding.FragmentPostBinding
 import com.darwin.photolandhk.posts.PostContent
+import com.darwin.photolandhk.posts.wpAPIDateString2Date
 
 class PostFragment(post: PostContent) : Fragment() {
 
@@ -31,9 +32,9 @@ class PostFragment(post: PostContent) : Fragment() {
         binding.lifecycleOwner = this
         val viewModelFactory = PostViewModelFactory(selectedPost.value!!, application)
         binding.viewModel = ViewModelProvider(this, viewModelFactory).get(PostViewModel::class.java)
+        binding.datePublished = wpAPIDateString2Date(_selectedPost.value!!.date)
+        binding.isTrue = true
 
         return binding.root
     }
-
-    class Glid
 }

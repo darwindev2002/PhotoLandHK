@@ -56,3 +56,8 @@ class AuthorInfo(
     val display_name: String,  // "Perry Yu"
     val author_link: String  // "https://photolandhk.com/author/perryyu/"
 ): Parcelable
+
+@Parcelize
+class Thumbnail(
+    val avatar_urls: Map<Int, String>
+) : Parcelable

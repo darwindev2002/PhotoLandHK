@@ -1,9 +1,6 @@
 package com.darwin.photolandhk
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.darwin.photolandhk.posts.PostContent
@@ -17,12 +14,9 @@ import com.darwin.photolandhk.ui.report.ReportFragment
 
 class MainActivity : AppCompatActivity() {
 
-    //    var currentVisibleFragmentByID by Delegates.notNull<Int>()
     val overviewFragment = OverviewFragment()
-
-    //    var fragmentStack = Stack<Int>()
     private var showingPost: PostFragment? = null
-//    private lateinit var bottomNav: BottomNavigationView
+
 
     /*
      * List of ID's of the overivew pages for navigation
@@ -35,62 +29,13 @@ class MainActivity : AppCompatActivity() {
         R.id.overview_events
     )
 
-//    private val navListener: BottomNavigationView.OnNavigationItemSelectedListener =
-//        BottomNavigationView.OnNavigationItemSelectedListener {item ->
-//            loadFragmentById(item.itemId)
-//            return@OnNavigationItemSelectedListener true
-//        }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.titleToolbar))
         supportFragmentManager.beginTransaction()
             .add(R.id.main_container, overviewFragment, R.id.overview_container.toString()).commit()
-//        bottomNav = findViewById(R.id.bottom_navigation)
-//        bottomNav.setOnNavigationItemSelectedListener(navListener)
-//        currentVisibleFragmentByID = R.id.overview_home
-////        bottomNav.selectedItemId = R.id.overview_home
-
-//        MobileAds.initialize(this) {}
-//        createAds()
-
     }
-
-//    override fun onBackPressed() {
-//        when {
-//            showingPost -> {bottomNav.visibility = View.VISIBLE; loadFragmentById(fragmentStack.pop());}
-//            overviewFragment.currentVisibleFragmentByID != R.id.overview_home -> loadFragmentById(R.id.overview_home)
-//            else -> super.onBackPressed()
-//        }
-//    }
-
-//    private fun loadOverivewFragmentById(id: Int, post: PostContent? = null) {
-//        val transaction = supportFragmentManager.beginTransaction()
-//
-//        if (showingPost != null) transaction.remove(showingPost!!)
-//        else {
-//            transaction.replace(
-//                R.id.fragment_overview_container,
-//                supportFragmentManager.findFragmentById(id)
-//            )
-//        }
-//        if (id == R.id.post || supportFragmentManager.findFragmentByTag(id.toString()) == null)
-//            transaction.add(
-//                R.id.main_container,
-//                createCorrespondingFragment(id, post),
-//                id.toString()
-//            )
-//        else
-//            transaction.show(supportFragmentManager.findFragmentByTag(id.toString())!!)
-////        val currentFrag = getCurrentFragment()
-////        if (currentFrag != null){
-////            if (currentVisibleFragmentByID == R.id.post) transaction.remove(currentFrag)
-////            if (currentVisibleFragmentByID == id) return
-////            else transaction = transaction.hide(currentFrag)
-////        }
-////        transaction.commit()
-////        currentVisibleFragmentByID = id
-//    }
 
     private fun createCorrespondingFragment(id: Int) = when (id) {
         R.id.overview_home -> HomeFragment()
@@ -138,12 +83,4 @@ class MainActivity : AppCompatActivity() {
         }
         transaction.commit()
     }
-
-    private fun startBrowserLaowa(view: View) {
-        val url = "https://www.laowa.com.hk"
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(url)
-        startActivity(intent)
-    }
-
 }

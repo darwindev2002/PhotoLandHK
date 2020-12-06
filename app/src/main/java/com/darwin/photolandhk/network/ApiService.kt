@@ -3,6 +3,7 @@ package com.darwin.photolandhk.network
 import com.darwin.photolandhk.posts.Category
 import com.darwin.photolandhk.posts.CategoryCount
 import com.darwin.photolandhk.posts.PostContent
+import com.darwin.photolandhk.posts.Thumbnail
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -56,6 +57,9 @@ interface ApiService {
                             @Query("categories") category: Int,
                             @Query("_fields") fields: String = "id,date,modified,title,content,author,categories,tags,author_info,featured_media,featured_image_src"): List<PostContent>
 
+    @GET("wp-json/wp/v2/users/{id}")
+    suspend fun getAuthorThumbnail(@Path("id") id: Int = 7,
+                                   @Query("_fields") fields: String = "avatar_urls"): Thumbnail
 //    @GET("wp-json/wp/v2/posts/{id}")
 //    suspend fun getPost(@Path("id") id: Int,
 //                        @Query("_fields") fields: String = "id,date,modified,title,content,author,categories,tags,author_info"): PostContent
